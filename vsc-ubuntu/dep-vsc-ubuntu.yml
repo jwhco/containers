@@ -39,7 +39,7 @@ spec:
                       claimName: pv-home
                 - name: pv-workspaces
                   persistentVolumeClaim:
-                      claimName: pv-workspace
+                      claimName: pv-workspaces
                 - name: dbus-socket
                   hostPath:
                       path: /var/run/dbus/system_bus_socket

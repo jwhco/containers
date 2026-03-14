@@ -5,7 +5,7 @@ metadata:
     labels:
         app: ubuntu-multiarch
 spec:
-    replicas: 4
+    replicas: 3
     selector:
         matchLabels:
             app: ubuntu-multiarch
@@ -46,4 +46,4 @@ spec:
                       claimName: pv-home
                 - name: pv-workspaces
                   persistentVolumeClaim:
-                      claimName: pv-workspace
+                      claimName: pv-workspaces

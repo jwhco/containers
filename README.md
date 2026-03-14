@@ -4,6 +4,7 @@
 
 ## Purpose
 
+- Make as close to GitHub Codespaces as possible. VsCode environment.
 - Make available configurations that may shared across projects. 
 - As a demonstration portfolio. Models and templates, not client work.
 - A practice of risk management. Make sure repo is sanitized.
