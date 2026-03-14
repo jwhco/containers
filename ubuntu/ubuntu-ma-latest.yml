@@ -36,11 +36,17 @@ spec:
                       requests:
                           cpu: "1"
                   volumeMounts:
+                      - name: tz-config
+                        mountPath: /etc/localtime
+                        subPath: localtime
                       - name: pv-home
                         mountPath: /home
                       - name: pv-workspaces
                         mountPath: /workspaces
             volumes:
+                - name: tz-config
+                  hostPath:
+                      path: /usr/share/zoneinfo/America/New_York
                 - name: pv-home
                   persistentVolumeClaim:
                       claimName: pv-home
