@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: ubuntu-ma-latest
+    labels:
+        app: ubuntu-ma-latest
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: ubuntu-ma-latest
+    template:
+        metadata:
+            labels:
+                app: ubuntu-ma-latest
+        spec:
+            containers:
+                - name: ubuntu-tools
+                  image: ubuntu:latest
+                  env:
+                      - name: TZ
+                        value: "America/New_York"
+                  imagePullPolicy: IfNotPresent
+                  command: ["/bin/bash"]
+                  args:
+                      - "-c"
+                      - |
+                          echo "Updating packages..."
+                          apt update
+                          apt install -y git python3 python3-venv python3-pip default-jdk make
+                          echo "Keep container running..."
+                          tail -f /dev/null
+                  resources:
+                      limits:
+                          cpu: "4"
+                      requests:
+                          cpu: "1"
+                  volumeMounts:
+                      - name: pv-home
+                        mountPath: /home
+                      - name: pv-workspaces
+                        mountPath: /workspaces
+            volumes:
+                - name: pv-home
+                  persistentVolumeClaim:
+                      claimName: pv-home
+                - name: pv-workspaces
+                  persistentVolumeClaim:
+                      claimName: pv-workspaces

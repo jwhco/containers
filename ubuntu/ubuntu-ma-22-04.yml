@@ -27,7 +27,7 @@ spec:
                       - |
                           echo "Updating packages..."
                           apt update -y
-                          apt install -y git python3 default-jdk make
+                          apt install -y git python3 python3-pip default-jdk make
                           echo "Keep container running..."
                           tail -f /dev/null
                   resources:
