@@ -1,19 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: ubuntu-ma-latest
+    name: ubuntu-ma-lates1
     labels:
-        app: ubuntu-ma-latest
+        app: ubuntu-ma-lates1
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: ubuntu-ma-latest
+            app: ubuntu-ma-lates1
     template:
         metadata:
             labels:
-                app: ubuntu-ma-latest
+                app: ubuntu-ma-lates1
         spec:
+            initContainers:
+                - name: configure-proxy
+                  image: ubuntu:latest
+                  command:
+                      [
+                          "bash",
+                          "-c",
+                          'echo "Acquire::http::Proxy \"http://apt-cacher-ng-service:3142\";" > /etc/apt/apt.conf.d/00proxy',
+                      ]
+                  volumeMounts:
+                      - name: apt-conf-storage
+                        mountPath: /etc/apt/apt.conf.d/
             containers:
                 - name: ubuntu-tools
                   image: ubuntu:latest
@@ -42,11 +54,15 @@ spec:
                       requests:
                           cpu: "1"
                   volumeMounts:
+                      - name: apt-conf-storage
+                        mountPath: /etc/apt/apt.conf.d/
                       - name: pv-home
                         mountPath: /home
                       - name: pv-workspaces
                         mountPath: /workspaces
             volumes:
+                - name: apt-conf-storage
+                  emptyDir: {}
                 - name: pv-home
                   persistentVolumeClaim:
                       claimName: pv-home
