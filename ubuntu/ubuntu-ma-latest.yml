@@ -22,6 +22,8 @@ spec:
                         value: "America/New_York"
                       - name: DEBIAN_FRONTEND
                         value: "noninteractive"
+                      - name: APT_PROXY
+                        value: "http://apt-cacher-ng-service:3142"
                   imagePullPolicy: IfNotPresent
                   command: ["/bin/bash"]
                   args:

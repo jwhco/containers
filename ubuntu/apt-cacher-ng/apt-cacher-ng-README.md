@@ -10,6 +10,6 @@ Each client pod that requires caching needs following environment variable to po
 env:
 - name: APT_PROXY
   value: "http://apt-cacher-ng-service:3142"
-  ```
+```
 
 

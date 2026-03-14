@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apt-cacher-ng
+spec:
+  replicas: 1  # Typically set to 1 for caching
+  selector:
+    matchLabels:
+      app: apt-cacher-ng
+  template:
+    metadata:
+      labels:
+        app: apt-cacher-ng
+    spec:
+      containers:
+      - name: apt-cacher-ng
+        image: sameersbn/apt-cacher-ng:latest
+        ports:
+        - containerPort: 3142
+        volumeMounts:
+        - name: apt-cacher-ng-storage
+          mountPath: /var/cache/apt-cacher-ng
+        env:
+        - name: REUSE_CACHED_PACKAGES
+          value: "true"
+      volumes:
+      - name: apt-cacher-ng-storage
+        persistentVolumeClaim:
+          claimName: apt-cacher-ng-pvc
+
