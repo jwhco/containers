@@ -5,13 +5,13 @@
 ## Purpose
 
 - Make as close to GitHub Codespaces as possible. VsCode environment.
-- Make available configurations that may shared across projects. 
+- Make available configurations that may shared across projects.
 - As a demonstration portfolio. Models and templates, not client work.
 - A practice of risk management. Make sure repo is sanitized.
 
 ## Reference
 
--   Working with the Container registry. https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+- Working with the Container registry. https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
 
 ## Deployment
 
@@ -36,14 +36,12 @@ kubectl get pods -o wide
 ```
 
 - When possible, clone GitHub into `/workspaces/` to be persitent about local copies. This will help reloads be faster because directory can be refreshed.
-- The `/home/` directory for where users live. It's okay to clone here, however, this is primary for running scripts and may not have as much space as *workspaces*.
+- The `/home/` directory for where users live. It's okay to clone here, however, this is primary for running scripts and may not have as much space as _workspaces_.
 - The `/workspaces/` mirrors GitHub Codespaces which is the backup for local systems. If the desktop fails, then continue work at https://github.dev/
-
 
 ## Wishlist
 
 - [Graphana](https://grafana.com/), Dashboarding and reporting platform. Visualization.
-- [N8N](https://n8n.io/). Workflow automation and engagement with component level nodes. 
+- [N8N](https://n8n.io/). Workflow automation and engagement with component level nodes.
 
-Copyright &copy; 2023-2025 [JWH Consolidated LLC](https://www.jwhco.com/), All rights reserved.
-
+> Copyright &copy; 2023-2025 [JWH Consolidated LLC](https://www.jwhco.com/), All rights reserved.
