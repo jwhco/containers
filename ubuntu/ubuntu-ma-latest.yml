@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: ubuntu-ma-latest1
+    name: ubuntu-ma-latest
     labels:
-        app: ubuntu-ma-latest1
+        app: ubuntu-ma-latest
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: ubuntu-ma-latest1
+            app: ubuntu-ma-latest
     template:
         metadata:
             labels:
-                app: ubuntu-ma-latest1
+                app: ubuntu-ma-latest
         spec:
             containers:
                 - name: ubuntu-tools
@@ -29,6 +29,7 @@ spec:
                   args:
                       - "-c"
                       - |
+                          echo "Acquire::http::Proxy \"http://apt-cacher-ng-service:3142\";" | tee /etc/apt/apt.conf.d/00proxy
                           echo "Updating packages..."
                           apt update
                           apt install -y git default-jdk make
