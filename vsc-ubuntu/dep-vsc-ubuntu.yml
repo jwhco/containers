@@ -18,28 +18,28 @@ spec:
                 - name: vsc-ubuntu
                   image: hittjw/vsc-ubuntu:latest
                   env:
-                    - name: TZ
-                      value: "America/New_York"
+                      - name: TZ
+                        value: "America/New_York"
                   imagePullPolicy: IfNotPresent
                   resources:
-                    requests:
-                      cpu: "1"
-                    limits:
-                      cpu: "4"
+                      requests:
+                          cpu: "1"
+                      limits:
+                          cpu: "4"
                   volumeMounts:
-                    - name: pv-home
-                      mountPath: /home
-                    - name: pv-workspace
-                      mountPath: /workspace
-                    - name: dbus-socket
-                      mountPath: /var/run/dbus/system_bus_socket
+                      - name: pv-home
+                        mountPath: /home
+                      - name: pv-workspaces
+                        mountPath: /workspaces
+                      - name: dbus-socket
+                        mountPath: /var/run/dbus/system_bus_socket
             volumes:
                 - name: pv-home
                   persistentVolumeClaim:
-                    claimName: pv-home
-                - name: pv-workspace
+                      claimName: pv-home
+                - name: pv-workspaces
                   persistentVolumeClaim:
-                    claimName: pv-workspace 
+                      claimName: pv-workspace
                 - name: dbus-socket
                   hostPath:
-                    path: /var/run/dbus/system_bus_socket
+                      path: /var/run/dbus/system_bus_socket

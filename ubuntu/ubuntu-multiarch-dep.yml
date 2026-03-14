@@ -1,49 +1,49 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ubuntu-multiarch
-  labels:
-    app: ubuntu-multiarch
-spec:
-  replicas: 4
-  selector:
-    matchLabels:
-      app: ubuntu-multiarch
-  template:
-    metadata:
-      labels:
+    name: ubuntu-multiarch
+    labels:
         app: ubuntu-multiarch
-    spec:
-      containers:
-        - name: ubuntu-tools
-          image: ubuntu:22.04
-          env:
-            - name: TZ
-              value: "America/New_York"
-          imagePullPolicy: IfNotPresent
-          command: ["/bin/bash"]
-          args:
-            - "-c"
-            - |
-              echo "Updating packages..."
-              apt update -y
-              apt install -y git python3 default-jdk make
-              echo "Keep container running..."
-              tail -f /dev/null
-          resources:
-            limits:
-              cpu: "4"
-            requests:
-              cpu: "1"
-          volumeMounts:
-            - name: pv-home
-              mountPath: /home
-            - name: pv-workspace
-              mountPath: /workspace
-      volumes:
-          - name: pv-home
-            persistentVolumeClaim:
-              claimName: pv-home
-          - name: pv-workspace
-            persistentVolumeClaim:
-              claimName: pv-workspace 
+spec:
+    replicas: 4
+    selector:
+        matchLabels:
+            app: ubuntu-multiarch
+    template:
+        metadata:
+            labels:
+                app: ubuntu-multiarch
+        spec:
+            containers:
+                - name: ubuntu-tools
+                  image: ubuntu:22.04
+                  env:
+                      - name: TZ
+                        value: "America/New_York"
+                  imagePullPolicy: IfNotPresent
+                  command: ["/bin/bash"]
+                  args:
+                      - "-c"
+                      - |
+                          echo "Updating packages..."
+                          apt update -y
+                          apt install -y git python3 default-jdk make
+                          echo "Keep container running..."
+                          tail -f /dev/null
+                  resources:
+                      limits:
+                          cpu: "4"
+                      requests:
+                          cpu: "1"
+                  volumeMounts:
+                      - name: pv-home
+                        mountPath: /home
+                      - name: pv-workspaces
+                        mountPath: /workspaces
+            volumes:
+                - name: pv-home
+                  persistentVolumeClaim:
+                      claimName: pv-home
+                - name: pv-workspaces
+                  persistentVolumeClaim:
+                      claimName: pv-workspace
