@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: ubuntu-ma-latest
+    name: ubuntu-ma-latest1
     labels:
-        app: ubuntu-ma-latest
+        app: ubuntu-ma-latest1
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: ubuntu-ma-latest
+            app: ubuntu-ma-latest1
     template:
         metadata:
             labels:
-                app: ubuntu-ma-latest
+                app: ubuntu-ma-latest1
         spec:
             containers:
                 - name: ubuntu-tools
@@ -39,16 +39,11 @@ spec:
                       requests:
                           cpu: "1"
                   volumeMounts:
-                      - name: tz-config
-                        mountPath: /etc/localtime
                       - name: pv-home
                         mountPath: /home
                       - name: pv-workspaces
                         mountPath: /workspaces
             volumes:
-                - name: tz-config
-                  hostPath:
-                      path: /usr/share/zoneinfo/America/New_York
                 - name: pv-home
                   persistentVolumeClaim:
                       claimName: pv-home
