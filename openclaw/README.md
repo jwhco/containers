@@ -9,10 +9,25 @@ https://openclaw.ai/
 ## Configuration
 
 ```bash
-npm i -g openclaw
+# Prepare Environment Ubuntu
+apt update
+apt upgrade
+
+# Install Node.js 22
+curl -sL https://deb.nodesource.com/setup_22.x | bash -
+apt install nodejs
+
+
+# Install OpenClaw
+npm install -g openclaw
 openclaw onboard
 ```
 
+## Usage
+
+1. Open one terminal for `openclaw gateway`
+2. Open second terminal for `openclaw tui`
+3. ENJOY
 
 ## Requirements
 
@@ -22,5 +37,6 @@ openclaw onboard
 
 - An `npm` based environment for package management. This platform may be used with later Python projects.
 
+- Persistent storage at `/root/.openclaw/` for configuration.
 
 /EOF/

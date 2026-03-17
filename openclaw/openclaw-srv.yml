@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: openclaw-service # Name of the service
+    namespace: default # Change this if your deployment is in a different namespace
+spec:
+    type: NodePort
+    ports:
+        - port: 18789
+          targetPort: 18789
+          nodePort: 30000
+    selector:
+        app: openclaw-ma-npm # Ensure this matches your deployment's labels

@@ -44,7 +44,7 @@ spec:
                           echo "Acquire::http::Proxy \"http://apt-cacher-ng-service:3142\";" | tee /etc/apt/apt.conf.d/00proxy
                           echo "Updating packages..."
                           apt update
-                          apt install -y make npm
+                          apt install -y make npm curl
                           apt install -y python3 python3-pip python3-venv 
                           echo "Keep container running..."
                           tail -f /dev/null
