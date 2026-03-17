@@ -11,11 +11,11 @@ https://openclaw.ai/
 ```bash
 # Prepare Environment Ubuntu
 apt update
-apt upgrade
+apt upgrade -y
 
 # Install Node.js 22
 curl -sL https://deb.nodesource.com/setup_22.x | bash -
-apt install nodejs
+apt install -y nodejs
 
 # Restore Backup (Optional)
 # Install OpenClaw
