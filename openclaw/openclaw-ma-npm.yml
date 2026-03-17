@@ -56,13 +56,19 @@ spec:
                   volumeMounts:
                       - name: apt-conf-storage
                         mountPath: /etc/apt/apt.conf.d/
+                      - name: openclaw-storage
+                        mountPath: /root/.openclaw
                       - name: pv-home
                         mountPath: /home
                       - name: pv-workspaces
                         mountPath: /workspaces
+            restartPolicy: Always
             volumes:
                 - name: apt-conf-storage
                   emptyDir: {}
+                - name: openclaw-storage
+                  persistentVolumeClaim:
+                    claimName: pv-openclaw
                 - name: pv-home
                   persistentVolumeClaim:
                       claimName: pv-home
