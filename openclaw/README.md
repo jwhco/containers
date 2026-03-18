@@ -26,21 +26,46 @@ openclaw onboard
 ## Usage
 
 1. Connect to Deployment,
-   1. Run, `kubectl exec --stdin --tty openclaw-ma-npm -- /bin/bash`
+    1. Run, `kubectl exec --stdin --tty openclaw-ma-npm -- /bin/bash`
 1. Open one terminal for `openclaw gateway`
-2. Open second terminal for `openclaw tui`
-3. ENJOY
+1. Open second terminal for `openclaw tui`
+1. ENJOY
 
 ## Requirements
 
-- An isolated environment with limited local resources. 
-  - Testing as a research agent on the open internet, writing editorial scripts, and simple data mining.
-  - Be aware of prompt injection. Assume the platform itself is a backdoor or trojan hourse. Lockdown on network.
+- An isolated environment with limited local resources.
+    - Testing as a research agent on the open internet, writing editorial scripts, and simple data mining.
+    - Be aware of prompt injection. Assume the platform itself is a backdoor or trojan hourse. Lockdown on network.
 
 - An `npm` based environment for package management. This platform may be used with later Python projects.
 
-- Persistent storage at `/root/.openclaw/` for configuration. 
-  - For other applications, I've done a home directory. `export OPENCLAW_WORKSPACE=/home/openclaw`
-  - To restore backup tar ball, `tar -xzpf openclaw-backup-YYYYMMDD-HHMMSS. tar.gz -C /`
+- Persistent storage at `/root/.openclaw/` for configuration.
+    - For other applications, I've done a home directory. `export OPENCLAW_WORKSPACE=/home/openclaw`
+    - To restore backup tar ball, `tar -xzpf openclaw-backup-YYYYMMDD-HHMMSS. tar.gz -C /`
+
+## Agents
+
+### Obsidian CLI
+
+```bash
+# Install Obsidian Locally
+curl https://github.com/obsidianmd/obsidian-releases/releases/download/v1.12.4/obsidian_1.12.4_amd64.deb
+dpkg -i obsidian_*.deb
+apt-get update
+apt-get install -f
+
+# Install ClawHub Client
+npm install -g clawhub
+clawhub install obsidian
+
+```
+
+- You'll need to install `obsidian-cli` like https://github.com/Yakitrak/notesmd-cli
+
+### video-frames
+
+```bash
+apt install -y ffmpeg
+```
 
 /EOF/
