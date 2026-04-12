@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Basic VsCode Dependencies
 RUN apt update && \
 	apt install -y git curl vim make \
-		&& rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/*
 
 # Install Python packages
 RUN apt update -y && \
