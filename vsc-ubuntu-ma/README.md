@@ -6,8 +6,6 @@
 
 ## Package
 
-
-- `ubuntu-multiarch-dep.yml` is most basic non-image deployment of mutli-arch vscode friendly installation. Upon connect, vscode will install server.
 - `vsc-ubuntu-ma.yml` pulls image from repository, already built with vscode, pandoc, and text analysis support.
 
 ## Local Kubernetes Cluster Has Multiple Architectures
@@ -25,6 +23,7 @@ docker buildx build --platform linux/amd64,linux/arm64 --tag hittjw/vsc-ubuntu-m
 docker push hittjw/vsc-ubuntu-ma:latest
 ```
 
+The build takes about 10 minutes, it will need a docker environment with a little horsepower.
 
 
 /EOF/

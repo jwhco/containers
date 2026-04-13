@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: ubuntu-ma-lates1
+    name: ubuntu-ma-latest
     labels:
-        app: ubuntu-ma-lates1
+        app: ubuntu-ma-latest
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: ubuntu-ma-lates1
+            app: ubuntu-ma-latest
     template:
         metadata:
             labels:
-                app: ubuntu-ma-lates1
+                app: ubuntu-ma-latest
         spec:
             initContainers:
                 - name: configure-proxy
