@@ -14,7 +14,7 @@ spec:
         spec:
             initContainers:
               - name: configure-proxy
-                image: ubuntu:latest
+                image: hittjw/vsc-ubuntu-ma:latest
                 command:
                     [
                         "bash",
